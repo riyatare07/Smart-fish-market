@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Smart Fish Market</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f9fb;
+            color: #12343b;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .dashboard-header {
+            background: #073b4c;
+            color: white;
+            padding: 18px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+        }
+
+        .dashboard-header h1 {
+            font-size: 24px;
+        }
+
+        .dashboard-header p {
+            margin-top: 5px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .logout-button {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-button:hover {
+            background: #c92f3b;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+
+            box-shadow: 0 8px 25px rgba(7,59,76,0.07);
+        }
+
+        .welcome-box h2 {
+            color: #073b4c;
+            margin-bottom: 8px;
+        }
+
+        .welcome-box p {
+            color: #64777c;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+
+            box-shadow: 0 8px 25px rgba(7,59,76,0.07);
+
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(7,59,76,0.12);
+        }
+
+        .stat-card .icon {
+            font-size: 30px;
+        }
+
+        .stat-card h3 {
+            margin-top: 10px;
+            color: #073b4c;
+        }
+
+        .stat-card p {
+            margin-top: 5px;
+            color: #008fc2;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MANAGEMENT SECTION
+        ========================= */
+
+        .management-box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+
+            box-shadow: 0 8px 25px rgba(7,59,76,0.07);
+        }
+
+        .management-box h2 {
+            color: #073b4c;
+            margin-bottom: 20px;
+        }
+
+        .management-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .management-button {
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+
+            background: #eef8ff;
+            color: #073b4c;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .management-button:hover {
+            background: #d8f1fb;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           INFORMATION
+        ========================= */
+
+        .info-box {
+            margin-top: 25px;
+            background: #073b4c;
+            color: white;
+            padding: 25px;
+            border-radius: 14px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .dashboard-header {
+                padding: 15px;
+            }
+
+            .dashboard-header h1 {
+                font-size: 19px;
+            }
+
+            .dashboard-container {
+                margin: 20px auto;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .management-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+            <h1>🐟 Smart Fish Market</h1>
+            <p>Admin Dashboard</p>
+        </div>
+
+        <button class="logout-button" onclick="logout()">
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN DASHBOARD
+    ========================= -->
+
+    <main class="dashboard-container">
+
+        <section class="welcome-box">
+
+            <h2>Welcome, Admin 👋</h2>
+
+            <p>
+                Manage fish products, prices, quantities and
+                daily availability from this dashboard.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================= -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="icon">🐟</div>
+
+                <h3>Total Fish Products</h3>
+
+                <p>27</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="icon">🏪</div>
+
+                <h3>Markets</h3>
+
+                <p>4</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="icon">🛒</div>
+
+                <h3>Orders</h3>
+
+                <p>0</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MANAGEMENT
+        ========================= -->
+
+        <section class="management-box">
+
+            <h2>⚙️ Product Management</h2>
+
+            <div class="management-buttons">
+
+                <button
+                    class="management-button"
+                    onclick="addFish()">
+                    ➕ Add New Fish
+                </button>
+
+                <button
+                    class="management-button"
+                    onclick="updateFish()">
+                    ✏️ Update Fish
+                </button>
+                <button
+                    class="management-button"
+                     onclick="updateQuantity()">
+                    📦 Update Quantity
+                </button>
+
+                <button
+                    class="management-button"
+                    onclick="removeFish()">
+                    🗑️ Remove Fish
+                </button>
+
+                <button
+                    class="management-button"
+                    onclick="availability()">
+                    📦 Update Availability
+                </button>
+
+                <button
+                    class="management-button"
+                    onclick="viewOrders()">
+                    🛒 View Orders
+                </button>
+
+                <button
+                    class="management-button"
+                    onclick="notifications()">
+                    🔔 Notifications
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMATION
+        ========================= -->
+
+        <section class="info-box">
+
+            <h3>📌 Admin Responsibilities</h3>
+
+            <p>
+                The administrator can manage fish information,
+                prices, quantities, availability and orders.
+                These management features will be connected
+                to the backend and MySQL database in the
+                upcoming development steps.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+    /* =========================
+       ADMIN LOGIN CHECK
+    ========================= */
+
+    if (localStorage.getItem("adminLoggedIn") !== "true") {
+        window.location.href = "admin.html";
+    }
+
+
+    /* =========================
+       UPDATE DASHBOARD STATS
+    ========================= */
+
+   async function updateDashboardStats() {
+
+    const statCards =
+        document.querySelectorAll(".stat-card");
+
+    if (statCards.length < 3) {
+        return;
+    }
+
+    const orderCount =
+        statCards[2].querySelector("p");
+
+    if (!orderCount) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch("/api/orders");
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.message ||
+                "Failed to load orders"
+            );
+        }
+
+        const orders =
+            data.orders || [];
+
+        /*
+         * Count unique order groups.
+         * One customer checkout can contain
+         * multiple fish items.
+         */
+
+        const uniqueOrders =
+            new Set(
+                orders.map(function(order) {
+                    return order.order_group;
+                })
+            );
+
+        orderCount.textContent =
+            uniqueOrders.size;
+
+    } catch (error) {
+
+        console.error(
+            "Error loading dashboard orders:",
+            error
+        );
+
+        orderCount.textContent = "0";
+    }
+}
+    /* =========================
+       LOGOUT
+    ========================= */
+
+    function logout() {
+
+        localStorage.removeItem("adminLoggedIn");
+
+        window.location.href = "admin.html";
+    }
+
+
+    /* =========================
+       ADD NEW FISH
+    ========================= */
+
+   async function addFish() {
+
+    const fishName = prompt("Enter fish name:");
+
+    if (!fishName || fishName.trim() === "") {
+        alert("Fish name is required.");
+        return;
+    }
+
+    const price = prompt("Enter price per kg:");
+
+    if (!price || isNaN(price) || Number(price) <= 0) {
+        alert("Please enter a valid price.");
+        return;
+    }
+
+    const quantity = prompt("Enter available quantity in kg:");
+
+    if (
+        quantity === null ||
+        quantity === "" ||
+        isNaN(quantity) ||
+        Number(quantity) < 0
+    ) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    const fishAvailability = prompt(
+        "Enter availability (Available / Out of Stock):",
+        "Available"
+    );
+
+    if (!fishAvailability || fishAvailability.trim() === "") {
+        alert("Availability is required.");
+        return;
+    }
+
+    /* =========================
+       IMAGE SELECTION BOX
+    ========================= */
+
+    const overlay = document.createElement("div");
+
+    overlay.style.position = "fixed";
+    overlay.style.inset = "0";
+    overlay.style.background = "rgba(0,0,0,0.55)";
+    overlay.style.display = "flex";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    overlay.style.zIndex = "99999";
+
+    const box = document.createElement("div");
+
+    box.style.background = "white";
+    box.style.padding = "30px";
+    box.style.borderRadius = "16px";
+    box.style.width = "90%";
+    box.style.maxWidth = "450px";
+    box.style.boxShadow = "0 20px 50px rgba(0,0,0,0.3)";
+
+    box.innerHTML = `
+        <h2 style="
+            color:#073b4c;
+            margin-bottom:10px;
+        ">
+            🐟 Add Fish Image
+        </h2>
+
+        <p style="
+            color:#607d86;
+            margin-bottom:20px;
+        ">
+            Select an image for ${fishName.trim()}.
+        </p>
+
+        <input
+            type="file"
+            id="fishImageInput"
+            accept="image/*"
+            style="
+                width:100%;
+                padding:12px;
+                border:1px solid #ccc;
+                border-radius:8px;
+                margin-bottom:20px;
+            "
+        >
+
+        <div style="
+            display:flex;
+            gap:10px;
+            justify-content:flex-end;
+        ">
+
+            <button
+                id="cancelImageButton"
+                style="
+                    padding:10px 18px;
+                    border:none;
+                    border-radius:8px;
+                    background:#e63946;
+                    color:white;
+                    cursor:pointer;
+                "
+            >
+                Cancel
+            </button>
+
+            <button
+                id="saveFishButton"
+                style="
+                    padding:10px 18px;
+                    border:none;
+                    border-radius:8px;
+                    background:#073b4c;
+                    color:white;
+                    cursor:pointer;
+                "
+            >
+                Upload & Add Fish
+            </button>
+
+        </div>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    const imageInput =
+        document.getElementById("fishImageInput");
+
+    const cancelButton =
+        document.getElementById("cancelImageButton");
+
+    const saveButton =
+        document.getElementById("saveFishButton");
+
+    cancelButton.addEventListener(
+        "click",
+        function () {
+            overlay.remove();
+        }
+    );
+
+    saveButton.addEventListener(
+        "click",
+        async function () {
+
+            const imageFile =
+                imageInput.files[0];
+
+            if (!imageFile) {
+
+                alert(
+                    "Please select a fish image first."
+                );
+
+                return;
+            }
+
+            saveButton.disabled = true;
+            saveButton.textContent = "Uploading...";
+
+            try {
+
+                /* =========================
+                   UPLOAD IMAGE
+                ========================= */
+
+                const formData =
+                    new FormData();
+
+                formData.append(
+                    "image",
+                    imageFile
+                );
+
+                const uploadResponse =
+                    await fetch(
+                        "/api/upload-image",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+                const uploadData =
+                    await uploadResponse.json();
+
+                if (!uploadResponse.ok) {
+
+                    alert(
+                        "❌ Image upload failed.\n\n" +
+                        uploadData.message
+                    );
+
+                    saveButton.disabled = false;
+                    saveButton.textContent =
+                        "Upload & Add Fish";
+
+                    return;
+                }
+
+                /* =========================
+                   SAVE FISH TO MYSQL
+                ========================= */
+
+                const newFish = {
+
+                    name:
+                        fishName.trim(),
+
+                    price:
+                        Number(price),
+
+                    quantity:
+                        Number(quantity),
+
+                    availability:
+                        fishAvailability.trim(),
+
+                    image:
+                        uploadData.imageUrl
+                };
+
+                const response =
+                    await fetch(
+                        "/api/fish",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    newFish
+                                )
+                        }
+                    );
+
+                const data =
+                    await response.json();
+
+                if (!response.ok) {
+
+                    alert(
+                        "❌ Failed to add fish.\n\n" +
+                        data.message
+                    );
+
+                    return;
+                }
+
+                overlay.remove();
+
+                alert(
+                    "🐟 Fish added successfully!\n\n" +
+
+                    "Name: " +
+                    newFish.name +
+
+                    "\nPrice: ₹" +
+                    newFish.price +
+                    " / kg" +
+
+                    "\nQuantity: " +
+                    newFish.quantity +
+                    " kg" +
+
+                    "\nAvailability: " +
+                    newFish.availability +
+
+                    "\nImage: Uploaded successfully" +
+
+                    "\n\n✅ Saved to MySQL database."
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error adding fish:",
+                    error
+                );
+
+                alert(
+                    "❌ Could not connect to backend.\n\n" +
+                    "Make sure server.js is running."
+                );
+
+                saveButton.disabled = false;
+
+                saveButton.textContent =
+                    "Upload & Add Fish";
+            }
+        }
+    );
+}
+    /* =========================
+       UPDATE FISH PRICE
+    ========================= */
+
+    function updateFish() {
+
+        const fishName =
+            prompt(
+                "Enter fish name to update:"
+            );
+
+        if (
+            !fishName ||
+            fishName.trim() === ""
+        ) {
+
+            alert("Fish name is required.");
+
+            return;
+        }
+
+
+        const newPrice =
+            prompt(
+                "Enter new price per kg:"
+            );
+
+        if (
+            !newPrice ||
+            isNaN(newPrice) ||
+            Number(newPrice) <= 0
+        ) {
+
+            alert("Please enter a valid price.");
+
+            return;
+        }
+
+
+        let adminFish =
+            JSON.parse(
+                localStorage.getItem("adminFish")
+            ) || [];
+
+
+        const existingFish =
+            adminFish.find(function(fish) {
+
+                return fish.name &&
+                    fish.name.trim().toLowerCase() ===
+                    fishName.trim().toLowerCase();
+
+            });
+
+
+        if (existingFish) {
+
+            existingFish.price =
+                Number(newPrice);
+
+        } else {
+
+            adminFish.push({
+
+                name: fishName.trim(),
+
+                price: Number(newPrice),
+
+                quantity: 0,
+
+                availability: "Available"
+
+            });
+        }
+
+
+        localStorage.setItem(
+            "adminFish",
+            JSON.stringify(adminFish)
+        );
+
+
+        alert(
+            "Fish price updated successfully! 🐟\n\n" +
+            "Fish: " +
+            fishName.trim() +
+            "\nNew Price: ₹" +
+            Number(newPrice) +
+            " / kg"
+        );
+    }
+
+
+    /* =========================
+       UPDATE QUANTITY
+    ========================= */
+
+    function updateQuantity() {
+
+        const fishName =
+            prompt(
+                "Enter fish name:"
+            );
+
+        if (
+            !fishName ||
+            fishName.trim() === ""
+        ) {
+
+            alert("Fish name is required.");
+
+            return;
+        }
+
+
+        const newQuantity =
+            prompt(
+                "Enter new quantity in kg:"
+            );
+
+        if (
+            newQuantity === null ||
+            newQuantity === "" ||
+            isNaN(newQuantity) ||
+            Number(newQuantity) < 0
+        ) {
+
+            alert(
+                "Please enter a valid quantity."
+            );
+
+            return;
+        }
+
+
+        let adminFish =
+            JSON.parse(
+                localStorage.getItem("adminFish")
+            ) || [];
+
+
+        const existingFish =
+            adminFish.find(function(fish) {
+
+                return fish.name &&
+                    fish.name.trim().toLowerCase() ===
+                    fishName.trim().toLowerCase();
+
+            });
+
+
+        if (!existingFish) {
+
+            alert(
+                "Fish not found.\n\n" +
+                "Please use the exact fish name."
+            );
+
+            return;
+        }
+
+
+        existingFish.quantity =
+            Number(newQuantity);
+
+
+        localStorage.setItem(
+            "adminFish",
+            JSON.stringify(adminFish)
+        );
+
+
+        alert(
+            "Quantity updated successfully! 📦\n\n" +
+            "Fish: " +
+            existingFish.name +
+            "\nNew Quantity: " +
+            existingFish.quantity +
+            " kg"
+        );
+    }
+
+
+    /* =========================
+       REMOVE FISH
+    ========================= */
+
+    function removeFish() {
+
+        const fishName =
+            prompt(
+                "Enter fish name to remove:"
+            );
+
+        if (
+            !fishName ||
+            fishName.trim() === ""
+        ) {
+
+            alert("Fish name is required.");
+
+            return;
+        }
+
+
+        let adminFish =
+            JSON.parse(
+                localStorage.getItem("adminFish")
+            ) || [];
+
+
+        const fishIndex =
+            adminFish.findIndex(function(fish) {
+
+                return fish.name &&
+                    fish.name.trim().toLowerCase() ===
+                    fishName.trim().toLowerCase();
+
+            });
+
+
+        if (fishIndex === -1) {
+
+            alert(
+                "Fish not found.\n\n" +
+                "Please use the exact fish name."
+            );
+
+            return;
+        }
+
+
+        const confirmRemove =
+            confirm(
+                "Are you sure you want to remove " +
+                adminFish[fishIndex].name +
+                "?"
+            );
+
+
+        if (!confirmRemove) {
+
+            return;
+        }
+
+
+        const removedFish =
+            adminFish.splice(
+                fishIndex,
+                1
+            )[0];
+
+
+        localStorage.setItem(
+            "adminFish",
+            JSON.stringify(adminFish)
+        );
+
+
+        alert(
+            "Fish removed from admin records successfully! 🗑️\n\n" +
+            "Fish: " +
+            removedFish.name
+        );
+    }
+
+
+    /* =========================
+       UPDATE AVAILABILITY
+    ========================= */
+
+    function availability() {
+
+        const fishName =
+            prompt(
+                "Enter fish name:"
+            );
+
+        if (
+            !fishName ||
+            fishName.trim() === ""
+        ) {
+
+            alert("Fish name is required.");
+
+            return;
+        }
+
+
+        const newAvailability =
+            prompt(
+                "Enter availability:\n\n" +
+                "Available\n" +
+                "Out of Stock"
+            );
+
+
+        if (
+            !newAvailability ||
+            newAvailability.trim() === ""
+        ) {
+
+            alert(
+                "Availability is required."
+            );
+
+            return;
+        }
+
+
+        let adminFish =
+            JSON.parse(
+                localStorage.getItem("adminFish")
+            ) || [];
+
+
+        const existingFish =
+            adminFish.find(function(fish) {
+
+                return fish.name &&
+                    fish.name.trim().toLowerCase() ===
+                    fishName.trim().toLowerCase();
+
+            });
+
+
+        if (!existingFish) {
+
+            alert(
+                "Fish not found.\n\n" +
+                "Please use the exact fish name."
+            );
+
+            return;
+        }
+
+
+        existingFish.availability =
+            newAvailability.trim();
+
+
+        localStorage.setItem(
+            "adminFish",
+            JSON.stringify(adminFish)
+        );
+
+
+        alert(
+            "Availability updated successfully! 📦\n\n" +
+            "Fish: " +
+            existingFish.name +
+            "\nAvailability: " +
+            existingFish.availability
+        );
+    }
+
+
+    /* =========================
+       VIEW ORDERS
+    ========================= */
+
+   async function viewOrders() {
+
+    try {
+
+        const response =
+            await fetch("/api/orders");
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Failed to load orders"
+            );
+
+        }
+
+        const orders =
+            data.orders || [];
+
+        if (orders.length === 0) {
+
+            alert(
+                "No orders found in the database."
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           GROUP ORDERS
+        ========================= */
+
+        const groupedOrders = {};
+
+        orders.forEach(function(order) {
+
+            if (!groupedOrders[order.order_group]) {
+
+                groupedOrders[order.order_group] = {
+
+                    orderGroup:
+                        order.order_group,
+
+                    customerName:
+                        order.customer_name,
+
+                    phone:
+                        order.customer_phone,
+
+                    address:
+                        order.customer_address,
+
+                    status:
+                        order.status,
+
+                    createdAt:
+                        order.created_at,
+
+                    items: []
+
+                };
+
+            }
+
+            groupedOrders[
+                order.order_group
+            ].items.push({
+
+                name:
+                    order.fish_name,
+
+                quantity:
+                    Number(order.quantity),
+
+                price:
+                    Number(order.price),
+
+                total:
+                    Number(order.total)
+
+            });
+
+        });
+
+
+        /* =========================
+           CREATE ORDER WINDOW
+        ========================= */
+
+        const overlay =
+            document.createElement("div");
+
+        overlay.style.position = "fixed";
+        overlay.style.inset = "0";
+        overlay.style.background =
+            "rgba(0,0,0,0.60)";
+        overlay.style.display = "flex";
+        overlay.style.alignItems = "center";
+        overlay.style.justifyContent = "center";
+        overlay.style.zIndex = "99999";
+        overlay.style.padding = "20px";
+
+
+        const box =
+            document.createElement("div");
+
+        box.style.background = "#f4f9fb";
+        box.style.width = "95%";
+        box.style.maxWidth = "900px";
+        box.style.maxHeight = "90vh";
+        box.style.overflowY = "auto";
+        box.style.borderRadius = "16px";
+        box.style.boxShadow =
+            "0 20px 60px rgba(0,0,0,0.35)";
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        const header =
+            document.createElement("div");
+
+        header.style.background = "#073b4c";
+        header.style.color = "white";
+        header.style.padding = "20px 25px";
+        header.style.display = "flex";
+        header.style.justifyContent =
+            "space-between";
+        header.style.alignItems = "center";
+        header.style.position = "sticky";
+        header.style.top = "0";
+        header.style.zIndex = "2";
+
+
+        const title =
+            document.createElement("h2");
+
+        title.textContent =
+            "🛒 Smart Fish Market Orders";
+
+        title.style.margin = "0";
+
+
+        const closeButton =
+            document.createElement("button");
+
+        closeButton.textContent = "✕";
+
+        closeButton.style.background =
+            "#e63946";
+
+        closeButton.style.color = "white";
+
+        closeButton.style.border = "none";
+
+        closeButton.style.borderRadius = "8px";
+
+        closeButton.style.padding =
+            "9px 14px";
+
+        closeButton.style.fontSize =
+            "18px";
+
+        closeButton.style.cursor =
+            "pointer";
+
+
+        closeButton.addEventListener(
+            "click",
+            function() {
+
+                overlay.remove();
+
+            }
+        );
+
+
+        header.appendChild(title);
+        header.appendChild(closeButton);
+
+        box.appendChild(header);
+
+
+        /* =========================
+           ORDER CONTENT
+        ========================= */
+
+        const content =
+            document.createElement("div");
+
+        content.style.padding = "20px";
+
+
+        Object.values(groupedOrders).forEach(
+            function(order) {
+
+                const orderCard =
+                    document.createElement("div");
+
+                orderCard.style.background =
+                    "white";
+
+                orderCard.style.borderRadius =
+                    "14px";
+
+                orderCard.style.padding =
+                    "20px";
+
+                orderCard.style.marginBottom =
+                    "20px";
+
+                orderCard.style.boxShadow =
+                    "0 8px 25px rgba(7,59,76,0.08)";
+
+
+                /* =========================
+                   ORDER HEADER
+                ========================= */
+
+                const orderHeader =
+                    document.createElement("div");
+
+                orderHeader.style.display =
+                    "flex";
+
+                orderHeader.style.justifyContent =
+                    "space-between";
+
+                orderHeader.style.alignItems =
+                    "center";
+
+                orderHeader.style.flexWrap =
+                    "wrap";
+
+                orderHeader.style.gap =
+                    "10px";
+
+                orderHeader.style.marginBottom =
+                    "15px";
+
+
+                const orderTitle =
+                    document.createElement("h3");
+
+                orderTitle.textContent =
+                    "📦 Order " +
+                    order.orderGroup;
+
+                orderTitle.style.color =
+                    "#073b4c";
+
+
+                const status =
+                    document.createElement("span");
+
+                status.textContent =
+                    order.status || "Pending";
+
+                status.style.background =
+                    "#fff3cd";
+
+                status.style.color =
+                    "#856404";
+
+                status.style.padding =
+                    "6px 12px";
+
+                status.style.borderRadius =
+                    "20px";
+
+                status.style.fontWeight =
+                    "bold";
+
+
+                orderHeader.appendChild(
+                    orderTitle
+                );
+
+                orderHeader.appendChild(
+                    status
+                );
+
+
+                orderCard.appendChild(
+                    orderHeader
+                );
+
+
+                /* =========================
+                   CUSTOMER DETAILS
+                ========================= */
+
+                const customerBox =
+                    document.createElement("div");
+
+                customerBox.style.background =
+                    "#eef8ff";
+
+                customerBox.style.padding =
+                    "15px";
+
+                customerBox.style.borderRadius =
+                    "10px";
+
+                customerBox.style.marginBottom =
+                    "15px";
+
+
+                customerBox.innerHTML =
+
+                    "<p style='margin-bottom:7px;'>" +
+                    "<strong>👤 Customer:</strong> " +
+                    order.customerName +
+                    "</p>" +
+
+                    "<p style='margin-bottom:7px;'>" +
+                    "<strong>📞 Phone:</strong> " +
+                    order.phone +
+                    "</p>" +
+
+                    "<p style='margin-bottom:7px;'>" +
+                    "<strong>📍 Address:</strong> " +
+                    order.address +
+                    "</p>" +
+
+                    "<p>" +
+                    "<strong>🕒 Date:</strong> " +
+                    new Date(
+                        order.createdAt
+                    ).toLocaleString() +
+                    "</p>";
+
+
+                orderCard.appendChild(
+                    customerBox
+                );
+
+
+                /* =========================
+                   ITEMS
+                ========================= */
+
+                const itemsTitle =
+                    document.createElement("h4");
+
+                itemsTitle.textContent =
+                    "🐟 Ordered Fish";
+
+                itemsTitle.style.color =
+                    "#073b4c";
+
+                itemsTitle.style.marginBottom =
+                    "10px";
+
+
+                orderCard.appendChild(
+                    itemsTitle
+                );
+
+
+                let orderTotal = 0;
+
+
+                order.items.forEach(
+                    function(item) {
+
+                        orderTotal +=
+                            Number(
+                                item.total || 0
+                            );
+
+
+                        const itemRow =
+                            document.createElement("div");
+
+                        itemRow.style.display =
+                            "flex";
+
+                        itemRow.style.justifyContent =
+                            "space-between";
+
+                        itemRow.style.alignItems =
+                            "center";
+
+                        itemRow.style.padding =
+                            "12px";
+
+                        itemRow.style.marginBottom =
+                            "8px";
+
+                        itemRow.style.background =
+                            "#f8fbfc";
+
+                        itemRow.style.borderRadius =
+                            "8px";
+
+
+                        const itemInfo =
+                            document.createElement("div");
+
+                        itemInfo.innerHTML =
+
+                            "<strong>" +
+                            item.name +
+                            "</strong>" +
+
+                            "<br>" +
+
+                            "<small>" +
+                            item.quantity +
+                            " kg × ₹" +
+                            item.price +
+                            " / kg" +
+                            "</small>";
+
+
+                        const itemTotal =
+                            document.createElement("strong");
+
+                        itemTotal.textContent =
+                            "₹" +
+                            item.total;
+
+
+                        itemTotal.style.color =
+                            "#008fc2";
+
+
+                        itemRow.appendChild(
+                            itemInfo
+                        );
+
+                        itemRow.appendChild(
+                            itemTotal
+                        );
+
+
+                        orderCard.appendChild(
+                            itemRow
+                        );
+
+                    }
+                );
+
+
+                /* =========================
+                   ORDER TOTAL
+                ========================= */
+
+                const totalBox =
+                    document.createElement("div");
+
+                totalBox.style.marginTop =
+                    "15px";
+
+                totalBox.style.paddingTop =
+                    "15px";
+
+                totalBox.style.borderTop =
+                    "2px solid #e5eef1";
+
+                totalBox.style.textAlign =
+                    "right";
+
+
+                totalBox.innerHTML =
+
+                    "<strong style='font-size:18px;color:#073b4c;'>" +
+
+                    "Order Total: ₹" +
+
+                    orderTotal +
+
+                    "</strong>";
+
+
+                orderCard.appendChild(
+                    totalBox
+                );
+
+
+                content.appendChild(
+                    orderCard
+                );
+
+            }
+        );
+
+
+        box.appendChild(content);
+
+        overlay.appendChild(box);
+
+        document.body.appendChild(overlay);
+
+
+        /* =========================
+           CLOSE ON OUTSIDE CLICK
+        ========================= */
+
+        overlay.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === overlay) {
+
+                    overlay.remove();
+
+                }
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading orders:",
+            error
+        );
+
+        alert(
+            "❌ Could not load orders.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+    /* =========================
+       NOTIFICATIONS
+    ========================= */
+
+    async function notifications() {
+
+    try {
+
+        /* =========================
+           GET ORDERS FROM MYSQL
+        ========================= */
+
+        const response =
+            await fetch("/api/orders");
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Failed to load orders"
+            );
+
+        }
+
+        const orders =
+            data.orders || [];
+
+
+        /* =========================
+           GET FISH FROM MYSQL
+        ========================= */
+
+        const fishResponse =
+            await fetch("/api/fish");
+
+        const fishData =
+            await fishResponse.json();
+
+        if (!fishResponse.ok) {
+
+            throw new Error(
+                fishData.message ||
+                "Failed to load fish"
+            );
+
+        }
+
+        const fish =
+            fishData.fish || [];
+
+
+        /* =========================
+           CREATE MESSAGE
+        ========================= */
+
+        let message =
+            "🔔 SMART FISH MARKET NOTIFICATIONS\n\n";
+
+
+        /* =========================
+           ORDER COUNT
+        ========================= */
+
+        const uniqueOrders =
+            new Set(
+                orders.map(function(order) {
+                    return order.order_group;
+                })
+            );
+
+
+        if (uniqueOrders.size > 0) {
+
+            message +=
+                "🛒 Orders received: " +
+                uniqueOrders.size +
+                "\n\n";
+
+        } else {
+
+            message +=
+                "🛒 No new orders.\n\n";
+
+        }
+
+
+        /* =========================
+           LOW STOCK
+        ========================= */
+
+        const lowStockFish =
+            fish.filter(function(item) {
+
+                return Number(
+                    item.quantity || 0
+                ) <= 5;
+
+            });
+
+
+        if (lowStockFish.length > 0) {
+
+            message +=
+                "⚠️ Low stock fish:\n";
+
+
+            lowStockFish.forEach(
+                function(item) {
+
+                    message +=
+                        "• " +
+                        item.name +
+                        " — " +
+                        item.quantity +
+                        " kg\n";
+
+                }
+            );
+
+        } else {
+
+            message +=
+                "✅ No low-stock fish found.";
+
+        }
+
+
+        alert(message);
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading notifications:",
+            error
+        );
+
+        alert(
+            "❌ Could not load notifications.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+    /* =========================
+       START DASHBOARD
+    ========================= */
+
+    updateDashboardStats();
+
+</script>
+
+</body>
+</html>

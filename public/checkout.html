@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - Smart Fish Market</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f9fb;
+            color: #073b4c;
+        }
+
+        .header {
+            background: white;
+            padding: 18px 7%;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .checkout-container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .checkout-title h1 {
+            margin-bottom: 8px;
+            font-size: 34px;
+        }
+
+        .checkout-title p {
+            color: #607d86;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .checkout-box {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(7, 59, 76, 0.08);
+        }
+
+        .checkout-box h2 {
+            margin-top: 0;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbdde3;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #00a6d6;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e4eef1;
+        }
+
+        .order-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .order-item p {
+            margin: 0;
+            color: #607d86;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 22px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .payment-box {
+            margin-top: 25px;
+        }
+
+        .payment-option {
+            display: block;
+            padding: 13px;
+            margin-bottom: 10px;
+            border: 1px solid #d5e4e9;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            margin-right: 8px;
+        }
+
+        .place-order {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #008fc2;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .place-order:hover {
+            background: #007ba8;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 30px 10px;
+            color: #607d86;
+        }
+
+        @media (max-width: 800px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            🐟 Smart Fish Market
+        </div>
+    </header>
+
+    <main class="checkout-container">
+
+        <div class="checkout-title">
+            <h1>Checkout</h1>
+            <p>Complete your details and place your fish order.</p>
+        </div>
+
+        <div class="checkout-grid">
+
+            <!-- Customer Details -->
+            <div class="checkout-box">
+
+                <h2>👤 Customer Details</h2>
+
+                <div class="form-group">
+                    <label for="customerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter phone number"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="address">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        placeholder="Enter your delivery address"
+                    ></textarea>
+                </div>
+
+                <div class="payment-box">
+
+                    <h2>💳 Payment Method</h2>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI"
+                            checked
+                        >
+                        UPI
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card"
+                        >
+                        Debit / Credit Card
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="COD"
+                        >
+                        Cash on Delivery
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- Order Summary -->
+            <div class="checkout-box">
+
+                <h2>🛒 Order Summary</h2>
+
+                <div id="orderItems">
+                    <div class="empty-cart">
+                        Loading cart...
+                    </div>
+                </div>
+
+                <div class="order-total">
+                    <span>Total</span>
+                    <span id="orderTotal">₹0</span>
+                </div>
+
+                <button
+                    class="place-order"
+                    onclick="placeOrder()">
+                    Place Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        let cart = [];
+
+        function loadCart() {
+
+            cart =
+                JSON.parse(
+                    localStorage.getItem("fishCart")
+                ) || [];
+
+            const orderItems =
+                document.getElementById("orderItems");
+
+            const orderTotal =
+                document.getElementById("orderTotal");
+
+            if (cart.length === 0) {
+
+                orderItems.innerHTML = `
+                    <div class="empty-cart">
+                        Your cart is empty.
+                    </div>
+                `;
+
+                orderTotal.textContent = "₹0";
+
+                return;
+            }
+
+            let total = 0;
+
+            orderItems.innerHTML = "";
+
+            cart.forEach(function(item) {
+
+                const itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+
+                const itemElement =
+                    document.createElement("div");
+
+                itemElement.className =
+                    "order-item";
+
+                itemElement.innerHTML = `
+                    <div>
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <p>
+                            ₹${item.price} × ${item.quantity}
+                        </p>
+                    </div>
+
+                    <strong>
+                        ₹${itemTotal}
+                    </strong>
+                `;
+
+                orderItems.appendChild(
+                    itemElement
+                );
+
+            });
+
+            orderTotal.textContent =
+                "₹" + total;
+        }
+
+
+        async function placeOrder() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your cart is empty."
+        );
+
+        return;
+    }
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+    const phone =
+        document.getElementById(
+            "phone"
+        ).value.trim();
+
+    const address =
+        document.getElementById(
+            "address"
+        ).value.trim();
+
+    const payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
+
+    if (!name || !phone || !address) {
+
+        alert(
+            "Please fill in all customer details."
+        );
+
+        return;
+    }
+
+    const placeOrderButton =
+        document.querySelector(
+            ".place-order"
+        );
+
+    placeOrderButton.disabled = true;
+
+    placeOrderButton.textContent =
+        "Placing Order...";
+
+    const orderData = {
+
+        customerName:
+            name,
+
+        phone:
+            phone,
+
+        address:
+            address,
+
+        paymentMethod:
+            payment,
+
+        items:
+            cart
+
+    };
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/orders",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            orderData
+                        )
+
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Failed to place order"
+            );
+
+        }
+
+        localStorage.removeItem(
+            "fishCart"
+        );
+
+        alert(
+            "Order placed successfully! 🐟\n\n" +
+            "Order ID: " +
+            data.orderGroup +
+            "\n\n" +
+            "Your order has been saved successfully."
+        );
+
+        window.location.href =
+            "index.html";
+
+    } catch (error) {
+
+        console.error(
+            "Order error:",
+            error
+        );
+
+        alert(
+            "❌ Could not place order.\n\n" +
+            error.message
+        );
+
+        placeOrderButton.disabled =
+            false;
+
+        placeOrderButton.textContent =
+            "Place Order";
+
+    }
+
+}
+
+
+        loadCart();
+
+    </script>
+
+</body>
+</html>
