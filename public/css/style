@@ -1,0 +1,1218 @@
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5fbfe;
+    color: #12343b;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #073b4c;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #8ee8ff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 500px;
+
+    padding: 90px 7%;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff7ff,
+            #ffffff
+        );
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.small-title {
+    color: #008fc2;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: 58px;
+
+    line-height: 1.08;
+
+    margin: 15px 0;
+
+    color: #073b4c;
+}
+
+.hero h1 span {
+    color: #008fc2;
+}
+
+.hero-content > p:not(.small-title) {
+    font-size: 18px;
+
+    color: #64777c;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   FISH SECTION
+========================= */
+
+.fish-section {
+    padding: 75px 7%;
+    background: #ffffff;
+}
+
+.section-heading {
+    margin-bottom: 38px;
+}
+
+.section-heading p {
+    color: #008fc2;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+
+    margin-top: 8px;
+
+    color: #073b4c;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category {
+    padding: 25px;
+
+    margin-bottom: 35px;
+
+    border-radius: 15px;
+}
+
+.category > h2 {
+    margin-bottom: 22px;
+
+    color: #073b4c;
+}
+
+.sea {
+    background: #eef8ff;
+
+    border: 1px solid #b9ddf2;
+}
+
+.shellfish {
+    background: #f1fff5;
+
+    border: 1px solid #c5e9d0;
+}
+
+.dry-fish {
+    background: #fff9ec;
+
+    border: 1px solid #f1d79c;
+}
+
+.freshwater {
+    background: #f7f0ff;
+
+    border: 1px solid #d9c4ef;
+}
+
+
+/* =========================
+   FISH GRID
+========================= */
+
+.fish-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================
+   FISH CARD
+========================= */
+
+.fish-card {
+    background: white;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    border: 1px solid #dce8eb;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.fish-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   FISH IMAGE
+========================= */
+
+.fish-image {
+    width: 100%;
+
+    height: 155px;
+
+    background: #f5f9fa;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 13px;
+}
+
+.fish-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================
+   FISH DETAILS
+========================= */
+
+.fish-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 19px;
+
+    color: #073b4c;
+}
+
+.fish-card p {
+    margin: 6px 0;
+
+    font-size: 14px;
+
+    color: #64777c;
+}
+
+.available {
+    display: block;
+
+    color: #159447;
+
+    font-weight: bold;
+
+    margin-top: 8px;
+}
+
+.limited {
+    display: block;
+
+    color: #e58a00;
+
+    font-weight: bold;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   ADD TO CART
+========================= */
+
+.add-cart {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 11px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #073b4c;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.add-cart:hover {
+    background: #008fc2;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MARKETS
+========================= */
+
+.markets {
+    padding: 65px 7%;
+
+    background: #f5fbfe;
+}
+
+.markets h2 {
+    margin-bottom: 25px;
+
+    color: #073b4c;
+}
+
+.market-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.market-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    border: 1px solid #dce8eb;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s;
+}
+
+.market-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+.market-card h3 {
+    margin-bottom: 10px;
+
+    color: #073b4c;
+}
+
+.market-card p {
+    color: #64777c;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #073b4c;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 45px;
+}
+
+footer p {
+    margin-top: 10px;
+
+    color: #c7dfe5;
+}
+
+
+/* =========================
+   FISH DETAILS POPUP
+========================= */
+
+.fish-popup {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+.fish-popup-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 450px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-fish-image {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+.fish-popup-content h2 {
+    margin-top: 5px;
+
+    margin-bottom: 20px;
+
+    color: #073b4c;
+}
+
+.popup-details p {
+    margin: 8px 0;
+}
+
+.popup-status {
+    margin-top: 20px;
+
+    font-weight: bold;
+}
+
+.close-popup {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-box {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 360px;
+
+    max-width: calc(100% - 40px);
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22);
+
+    border: 1px solid #dce8eb;
+
+    z-index: 9998;
+
+    display: none;
+}
+
+.cart-box.show {
+    display: block;
+}
+
+.cart-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.cart-header h2 {
+    color: #073b4c;
+}
+
+.close-cart {
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.cart-items {
+    max-height: 260px;
+
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #e5eef0;
+}
+
+.cart-item strong {
+    color: #073b4c;
+}
+
+.cart-item p {
+    margin-top: 4px;
+
+    color: #64777c;
+
+    font-size: 13px;
+}
+
+.remove-item {
+    border: none;
+
+    background: #ffe9e9;
+
+    color: #c62828;
+
+    padding: 7px 10px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.cart-total {
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #073b4c;
+
+    margin: 18px 0;
+}
+
+.checkout-button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #073b4c;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.checkout-button:hover {
+    background: #008fc2;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+    .fish-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px 7%;
+        min-height: 420px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .fish-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .market-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-box {
+        right: 10px;
+        bottom: 10px;
+        max-width: calc(100% - 20px);
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+
+    .fish-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fish-image {
+        height: 190px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .fish-section {
+        padding: 55px 5%;
+    }
+
+    .category {
+        padding: 18px;
+    }
+
+}
+
+/* =========================================================
+   FISH POPUP
+========================================================= */
+
+.fish-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.fish-popup-content {
+    position: relative;
+    width: min(500px, 95%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: popupOpen 0.25s ease;
+}
+
+@keyframes popupOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-fish-image {
+    width: 100%;
+    max-width: 400px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.fish-popup-content h2 {
+    margin: 10px 0;
+    color: #073b4c;
+    font-size: 28px;
+}
+
+.popup-details {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.popup-details p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.popup-status {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #073b4c;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.close-popup:hover {
+    background: #e63946;
+}
+
+
+/* =========================================================
+   SHOPPING CART
+========================================================= */
+
+.cart-box {
+    position: fixed;
+    top: 0;
+    right: -430px;
+    width: 400px;
+    max-width: 92%;
+    height: 100vh;
+    background: white;
+    z-index: 10000;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+    padding: 25px;
+    box-sizing: border-box;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.cart-box.show {
+    right: 0;
+}
+
+
+/* Cart Header */
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-header h2 {
+    margin: 0;
+    color: #073b4c;
+}
+
+.close-cart {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #073b4c;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.close-cart:hover {
+    background: #e63946;
+}
+
+
+/* Cart Items */
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item strong {
+    color: #073b4c;
+    font-size: 17px;
+}
+
+.cart-item p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.remove-item {
+    border: none;
+    background: #ffe5e5;
+    color: #d62828;
+    padding: 7px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-item:hover {
+    background: #d62828;
+    color: white;
+}
+
+
+/* Cart Total */
+
+.cart-total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #073b4c;
+    padding: 18px 0;
+    border-top: 2px solid #073b4c;
+}
+
+
+/* Checkout Button */
+
+.checkout-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #073b4c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout-button:hover {
+    background: #0a596f;
+}
+
+
+/* =========================================================
+   ADD TO CART BUTTON
+========================================================= */
+
+.add-cart {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-cart:hover {
+    transform: translateY(-2px);
+}
+
+.add-cart:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .fish-popup {
+        padding: 10px;
+    }
+
+    .fish-popup-content {
+        padding: 20px;
+    }
+
+    .popup-fish-image {
+        height: 200px;
+    }
+
+    .fish-popup-content h2 {
+        font-size: 23px;
+    }
+
+    .cart-box {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cart-item {
+        align-items: flex-start;
+    }
+
+}
+
+/* HERO BACKGROUND IMAGE */
+.hero {
+    background:
+        linear-gradient(rgba(220, 245, 252, 0.72), rgba(220, 245, 252, 0.72)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Fish_market_within_the_New_Market%2C_Kolkata_02.jpg?width=1600");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* HERO BACKGROUND IMAGE */
+.hero {
+    background:
+        linear-gradient(
+            rgba(0, 35, 50, 0.48),
+            rgba(0, 35, 50, 0.48)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Fishing%20boats%20at%27Sassoon%20Docks%27%20in%20Mumbai..JPG?width=1600");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero {
+    background-image: 
+        linear-gradient(rgba(0, 35, 50, 0.38), rgba(0, 35, 50, 0.38)),
+        url("../images/hero-fish-market.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    display: none !important;
+}
+
+/* =========================================================
+   PROFESSIONAL UI UPGRADE
+   Existing images and page structure are NOT changed
+========================================================= */
+
+/* Main page smoothness */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f4f9fb;
+}
+
+/* Header upgrade */
+.header {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    letter-spacing: 0.3px;
+}
+
+/* Navigation hover */
+.nav a {
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #00a6d6;
+    transition: width 0.25s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero */
+.hero {
+    box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Category sections */
+.category {
+    box-shadow: 0 8px 30px rgba(7, 59, 76, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+    box-shadow: 0 12px 35px rgba(7, 59, 76, 0.10);
+}
+
+/* Fish cards */
+.fish-card {
+    position: relative;
+    border: 1px solid rgba(7, 59, 76, 0.10);
+    box-shadow: 0 8px 22px rgba(7, 59, 76, 0.07);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.fish-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 166, 214, 0.35);
+    box-shadow: 0 18px 35px rgba(7, 59, 76, 0.14);
+}
+
+/* Fish images - image itself is NOT changed */
+.fish-image {
+    transition: transform 0.4s ease;
+}
+
+.fish-card:hover .fish-image {
+    transform: scale(1.03);
+}
+
+/* Fish name */
+.fish-card h3 {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+/* Price line */
+.fish-card p:nth-of-type(2) {
+    color: #008fc2;
+    font-weight: 700;
+}
+
+/* Availability */
+.available {
+    font-weight: 700;
+}
+
+/* Add to cart button */
+.add-cart {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.add-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(0, 143, 194, 0.25);
+}
+
+.add-cart:active {
+    transform: translateY(0);
+}
+
+/* Market cards */
+.market-card {
+    border: 1px solid rgba(7, 59, 76, 0.10);
+    box-shadow: 0 8px 24px rgba(7, 59, 76, 0.07);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.market-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0, 166, 214, 0.30);
+    box-shadow: 0 16px 32px rgba(7, 59, 76, 0.12);
+}
+
+/* Section headings */
+.fish-section h2,
+.markets-section h2,
+.about-section h2 {
+    letter-spacing: 0.2px;
+}
+
+/* Cart professional shadow */
+.cart-box {
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.20);
+    border: 1px solid rgba(7, 59, 76, 0.10);
+}
+
+/* Popup professional shadow */
+.fish-popup-content {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile touch improvement */
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Cleaner selection */
+::selection {
+    background: #008fc2;
+    color: white;
+}
